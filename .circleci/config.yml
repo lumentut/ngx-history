@@ -1,11 +1,13 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@5.2.0
+
 jobs:
   test:
     working_directory: ~/ngx-history
     docker:
-      - image: circleci/node:10-browsers
+      - image: cimg/node:20.11-browsers
     steps:
       - checkout
       - run:
@@ -13,24 +15,64 @@ jobs:
           command: echo ${CIRCLE_BRANCH}
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
       - run:
-          name: Install local dependencies
-          command: npm install
+          name: Install dependencies
+          command: npm ci
       - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
       - run:
-          name: Linting
+          name: Lint library
           command: npm run lint
       - run:
-          name: Testing
+          name: Test library
           command: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - run:
+          name: Build library
+          command: npm run build
+      - run:
+          name: Build demo
+          command: ng build ngx-history-demo --configuration production
+
+  deploy-demo:
+    working_directory: ~/ngx-history
+    docker:
+      - image: cimg/node:20.11-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+            - v2-dependencies-
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
+          name: Build library
+          command: npm run build
+      - run:
+          name: Build demo for GitHub Pages
+          command: ng build ngx-history-demo --configuration production --base-href "/ngx-history/"
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "main" ] || [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm install -g gh-pages
+              gh-pages -d dist/ngx-history-demo
+            fi
 
 workflows:
-  version: 2
-  default_workflow:
+  test_and_deploy:
     jobs:
       - test
+      - deploy-demo:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - main
+                - master

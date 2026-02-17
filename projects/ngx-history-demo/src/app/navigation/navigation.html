@@ -1,0 +1,81 @@
+<nav class="navigation">
+  <div class="nav-brand">
+    <h2>🕰️ NgxHistory Demo</h2>
+  </div>
+
+  <div class="nav-links">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+    <a routerLink="/products" routerLinkActive="active">Products</a>
+    <a routerLink="/contact" routerLinkActive="active">Contact</a>
+  </div>
+
+  <div class="history-controls">
+    <button
+      class="history-btn back"
+      [disabled]="!historyService.canGoBack"
+      (click)="goBack()"
+    >
+      ← Back
+    </button>
+
+    <button
+      class="history-btn forward"
+      [disabled]="!historyService.canGoForward"
+      (click)="goForward()"
+    >
+      Forward →
+    </button>
+
+    <button class="history-btn clear" (click)="clearHistory()">
+      Clear History
+    </button>
+  </div>
+</nav>
+
+<div class="history-info" *ngIf="navigationState">
+  <div class="info-section">
+    <h4>📊 Navigation History</h4>
+    <p><strong>Current Path:</strong> {{ navigationState.currentPath }}</p>
+    <p><strong>History Length:</strong> {{ navigationState.paths.length }}</p>
+    <p><strong>Current Index:</strong> {{ navigationState.currentIndex }}</p>
+  </div>
+
+  <div class="info-section">
+    <h4>📋 Path History</h4>
+    <div class="path-list">
+      <div
+        *ngFor="let path of navigationState.paths; let i = index"
+        class="path-item"
+        [class.current]="i === navigationState.currentIndex"
+      >
+        <span class="path-index">{{ i + 1 }}</span>
+        <span class="path-url">{{ path }}</span>
+        <span
+          *ngIf="i === navigationState.currentIndex"
+          class="current-indicator"
+          >← Current</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscription Example: Navigation Errors -->
+  <div class="info-section" *ngIf="navigationErrors.length > 0">
+    <h4>⚠️ Navigation Errors (Last 5)</h4>
+    <div class="error-list">
+      <div 
+        *ngFor="let error of navigationErrors" 
+        class="error-item"
+        [class]="'error-' + error.type.toLowerCase()"
+      >
+        <span class="error-type">{{ error.type }}</span>
+        <span class="error-message">{{ error.message }}</span>
+        <span class="error-time">{{ error.timestamp | date:'HH:mm:ss' }}</span>
+      </div>
+    </div>
+    <button class="clear-errors-btn" (click)="clearErrors()">
+      Clear Errors
+    </button>
+  </div>
+</div>

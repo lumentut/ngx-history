@@ -1,21 +1,26 @@
 {
   "name": "ngx-history",
-  "version": "0.0.3",
-  "description": "An Angular navigation history module.",
+  "version": "2.0.0",
+  "description": "Modern Angular navigation history service with reactive programming support for Angular 21+.",
   "keywords": [
     "angular",
+    "angular21",
     "navigation",
     "history",
+    "router",
+    "rxjs",
+    "reactive",
+    "typescript",
     "ngx-history"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/yohaneslumentut/ngx-history",
+  "homepage": "https://lumentut.github.io/ngx-history/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yohaneslumentut/ngx-history.git"
+    "url": "git+https://github.com/lumentut/ngx-history.git"
   },
   "bugs": {
-    "url": "https://github.com/yohaneslumentut/ngx-history/issues"
+    "url": "https://github.com/lumentut/ngx-history/issues"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0",

@@ -1,0 +1,75 @@
+<div class="page-content">
+  <div class="hero-section">
+    <h1>🎯 NgxHistory Demo</h1>
+    <p class="hero-subtitle">
+      Experience browser-like navigation history in Angular applications
+    </p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⏮️</div>
+      <h3>Back Navigation</h3>
+      <p>
+        Navigate backwards through your application history, just like browser
+        back button
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">⏭️</div>
+      <h3>Forward Navigation</h3>
+      <p>Move forward through previously visited pages when available</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>State Tracking</h3>
+      <p>
+        Observable stream of navigation state with full reactive programming
+        support
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔧</div>
+      <h3>Easy Integration</h3>
+      <p>
+        Simple service injection with TypeScript support and modern Angular
+        patterns
+      </p>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>🚀 How to Use</h2>
+    <div class="code-example">
+      <pre><code>// Inject the service
+constructor(private historyService: HistoryService) {{ '{' }}
+
+// Navigate backwards
+this.historyService.goBack();
+
+// Navigate forwards
+this.historyService.goForward();
+
+// Subscribe to navigation state
+this.historyService.navigationState$.subscribe(state => {{ '{' }}
+  console.log('Can go back:', state.canGoBack);
+  console.log('Current path:', state.currentPath);
+{{ '}' }});</code></pre>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Try it now!</h2>
+    <p>
+      Navigate to different pages using the links above, then use the
+      Back/Forward buttons to see NgxHistory in action.
+    </p>
+    <div class="cta-buttons">
+      <a routerLink="/about" class="cta-btn primary">Explore About</a>
+      <a routerLink="/products" class="cta-btn secondary">View Products</a>
+    </div>
+  </div>
+</div>

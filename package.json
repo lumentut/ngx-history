@@ -1,6 +1,6 @@
 {
   "name": "ngx-history",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,10 @@
     "test": "ng test ngx-history",
     "lint": "ng lint ngx-history",
     "test-ci": "ng lint ngx-history && ng test ngx-history --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox",
-    "build-ci": "ng build ngx-history"
+    "build-ci": "ng build ngx-history",
+    "build:demo": "ng build ngx-history && ng build ngx-history-demo --base-href /ngx-history/",
+    "deploy:demo": "npm run build:demo && npx angular-cli-ghpages --dir=dist/ngx-history-demo",
+    "predeploy": "npm run build:demo"
   },
   "private": true,
   "dependencies": {
@@ -26,10 +29,12 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^21.1.4",
+    "@angular/build": "^21.1.4",
     "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "^21.1.4",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^22.10.2",
+    "angular-cli-ghpages": "^2.0.1",
     "jasmine-core": "^5.4.0",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "^6.4.4",

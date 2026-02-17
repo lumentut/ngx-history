@@ -1,0 +1,240 @@
+<div class="page-content">
+  <div class="page-header">
+    <h1>📞 Get in Touch</h1>
+    <p class="page-subtitle">
+      We'd love to hear from you! Reach out with questions, suggestions, or
+      feedback.
+    </p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-form-section">
+      <div class="form-container">
+        <h2>📝 Send us a Message</h2>
+        <p class="form-description">
+          Have a question about NgxHistory? Need help with implementation? We're
+          here to help!
+        </p>
+
+        <form
+          class="contact-form"
+          (ngSubmit)="onSubmit()"
+          #contactForm="ngForm"
+        >
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="formData.name"
+              required
+              class="form-control"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              required
+              email
+              class="form-control"
+              placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select
+              id="subject"
+              name="subject"
+              [(ngModel)]="formData.subject"
+              required
+              class="form-control"
+            >
+              <option value="">Select a topic...</option>
+              <option value="general">General Question</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="implementation">Implementation Help</option>
+              <option value="documentation">Documentation Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="formData.message"
+              required
+              class="form-control"
+              rows="6"
+              placeholder="Tell us more about your question or feedback..."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input
+                type="checkbox"
+                name="newsletter"
+                [(ngModel)]="formData.newsletter"
+                class="checkbox"
+              />
+              <span class="checkmark"></span>
+              Subscribe to updates about NgxHistory releases and features
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            class="btn primary submit-btn"
+            [disabled]="!contactForm.valid"
+          >
+            🚀 Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="contact-info-section">
+      <div class="contact-methods">
+        <h3>🔗 Connect With Us</h3>
+
+        <div class="contact-method">
+          <div class="method-icon">💾</div>
+          <div class="method-info">
+            <h4>GitHub Repository</h4>
+            <p>Report issues, contribute code, or browse the source</p>
+            <a href="#" class="method-link">github.com/ngx-history</a>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="method-icon">📦</div>
+          <div class="method-info">
+            <h4>NPM Package</h4>
+            <p>Install the library and check version history</p>
+            <a href="#" class="method-link">npmjs.com/package/ngx-history</a>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="method-icon">📚</div>
+          <div class="method-info">
+            <h4>Documentation</h4>
+            <p>Complete guides, API reference, and examples</p>
+            <a href="#" class="method-link">ngx-history.dev/docs</a>
+          </div>
+        </div>
+
+        <div class="contact-method">
+          <div class="method-icon">💬</div>
+          <div class="method-info">
+            <h4>Discussions</h4>
+            <p>Community questions, ideas, and announcements</p>
+            <a href="#" class="method-link"
+              >github.com/ngx-history/discussions</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="response-info">
+        <h3>⌚ Response Times</h3>
+        <div class="response-grid">
+          <div class="response-item">
+            <span class="response-type">Bug Reports:</span>
+            <span class="response-time">24-48 hours</span>
+          </div>
+          <div class="response-item">
+            <span class="response-type">General Questions:</span>
+            <span class="response-time">2-3 business days</span>
+          </div>
+          <div class="response-item">
+            <span class="response-type">Feature Requests:</span>
+            <span class="response-time">1-2 weeks</span>
+          </div>
+          <div class="response-item">
+            <span class="response-type">Documentation:</span>
+            <span class="response-time">3-5 business days</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-info">
+        <h3>👥 Community Guidelines</h3>
+        <ul class="guidelines-list">
+          <li>Be respectful and constructive in all communications</li>
+          <li>Search existing issues before creating new ones</li>
+          <li>Provide minimal reproducible examples for bugs</li>
+          <li>Include version information and environment details</li>
+          <li>Follow the code of conduct in all interactions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>How do I install NgxHistory?</h4>
+        <p>
+          Simply run <code>npm install ngx-history</code> in your Angular
+          project. No additional setup required - the service uses
+          <code>providedIn: 'root'</code> for automatic injection.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Which Angular versions are supported?</h4>
+        <p>
+          NgxHistory 2.x supports Angular 15+. For older Angular versions
+          (11-14), use NgxHistory 1.x which is still maintained.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Does it work with Angular Router?</h4>
+        <p>
+          Yes! NgxHistory is designed to work seamlessly with Angular Router. It
+          listens to routing events and maintains its own navigation stack.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Can I customize the history behavior?</h4>
+        <p>
+          The service provides a clean API for navigation control. While the
+          core behavior is standardized, you can build custom logic on top of
+          the observable streams.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Is there TypeScript support?</h4>
+        <p>
+          Absolutely! NgxHistory is written in TypeScript with full type
+          definitions, interfaces, and IntelliSense support included.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h4>How do I contribute to the project?</h4>
+        <p>
+          We welcome contributions! Check out our GitHub repository for
+          contribution guidelines, open issues, and development setup
+          instructions.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
