@@ -2,8 +2,8 @@
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-blue?style=for-the-badge)](https://lumentut.github.io/ngx-history/)
 
-<a href="https://circleci.com/gh/lumentut/ngx-history/tree/master">
-  <img src="https://img.shields.io/circleci/build/github/lumentut/ngx-history.svg?logo=circleci&logoColor=fff&label=CircleCI" alt="CI status" />
+<a href="https://github.com/lumentut/ngx-history/actions/workflows/deploy-demo.yml">
+  <img src="https://github.com/lumentut/ngx-history/actions/workflows/deploy-demo.yml/badge.svg" alt="CI status" />
 </a>&nbsp;
 <a href="https://www.npmjs.com/package/ngx-history">
   <img src="https://img.shields.io/npm/v/ngx-history.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="ngx-history on npm" />
