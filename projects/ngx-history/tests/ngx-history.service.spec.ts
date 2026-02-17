@@ -7,25 +7,33 @@ import { NgxHistoryModule } from '../src/public-api';
 import { HistoryService } from '../src/lib/history.service';
 
 @Component({
-  template: `About`
+  selector: 'test-about',
+  template: `About`,
+  standalone: false
 })
 export class AboutComponent {
 }
 
 @Component({
-  template: `Contact`
+  selector: 'test-contact',
+  template: `Contact`,
+  standalone: false
 })
 export class ContactComponent {
 }
 
 @Component({
-  template: `Home`
+  selector: 'test-home',
+  template: `Home`,
+  standalone: false
 })
 export class HomeComponent {
 }
 
 @Component({
-  template: `<router-outlet></router-outlet>`
+  selector: 'test-app',
+  template: `<router-outlet></router-outlet>`,
+  standalone: false
 })
 export class AppComponent {
   constructor(

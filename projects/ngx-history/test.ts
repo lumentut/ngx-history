@@ -8,19 +8,11 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
-declare const require: {
-  context(path: string, deep?: boolean, filter?: RegExp): {
-    keys(): string[];
-    <T>(id: string): T;
-  };
-};
-
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
-// Then we find all the tests.
-const context = require.context('./tests', true, /\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
+
+// Import all spec files directly
+import './tests/ngx-history.service.spec';

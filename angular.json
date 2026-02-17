@@ -28,23 +28,10 @@
             "tsConfig": "projects/ngx-history/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-history/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-history/tsconfig.lib.json",
-              "projects/ngx-history/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }},
   "cli": {
     "analytics": false
-  },
-  "defaultProject": "ngx-history"
+  }
 }
