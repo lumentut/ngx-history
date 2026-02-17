@@ -2,17 +2,17 @@
 
 import 'zone.js';
 import 'zone.js/testing';
-import { getTestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(
+TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
 
-// Import all spec files directly
+// Import all spec files
 import './tests/ngx-history.service.spec';
