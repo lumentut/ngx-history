@@ -9,6 +9,7 @@
     "lint": "echo 'Linting not configured. Run: ng add @angular-eslint/schematics'",
     "test-ci": "npx ng test ngx-history --watch=false --no-progress --browsers=ChromeHeadlessCI",
     "build-ci": "npx ng build ngx-history --configuration production",
+    "build:npm": "npx ng build ngx-history",
     "build:demo": "npx ng build ngx-history --configuration production && npx ng build ngx-history-demo --base-href /ngx-history/ --configuration production",
     "deploy:demo": "npm run build:demo && npx angular-cli-ghpages --dir=dist/ngx-history-demo",
     "predeploy": "npm run build:demo"
