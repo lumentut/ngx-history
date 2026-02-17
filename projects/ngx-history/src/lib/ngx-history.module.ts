@@ -4,6 +4,6 @@ import { HistoryService } from './history.service';
 @NgModule({
     declarations: [],
     exports: [],
-    providers: [HistoryService]
+    providers: [] // HistoryService provides itself via providedIn: 'root'"
 })
 export class NgxHistoryModule {}
