@@ -37,10 +37,10 @@ jobs:
         run: npm run test-ci
 
       - name: Build library 🏗️
-        run: ng build ngx-history --configuration production
+        run: npx ng build ngx-history --configuration production
 
       - name: Build demo 🏗️
-        run: ng build ngx-history-demo --base-href /ngx-history/ --configuration production
+        run: npx ng build ngx-history-demo --base-href /ngx-history/ --configuration production
 
       - name: Setup Pages 📄
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
