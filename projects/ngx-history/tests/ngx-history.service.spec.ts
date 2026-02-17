@@ -1,8 +1,8 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { Location } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router, Routes } from '@angular/router';
-import { Component } from '@angular/core';
+import { Router, Routes, RouterOutlet, RouterModule } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxHistoryModule } from '../src/public-api';
 import { HistoryService } from '../src/lib/history.service';
 
@@ -33,7 +33,8 @@ export class HomeComponent {
 @Component({
   selector: 'test-app',
   template: `<router-outlet></router-outlet>`,
-  standalone: false
+  standalone: true,
+  imports: [RouterOutlet]
 })
 export class AppComponent {
   constructor(
@@ -59,14 +60,16 @@ describe('NgxHistoryModule', () => {
     TestBed.configureTestingModule({
       imports: [
         NgxHistoryModule,
-        RouterTestingModule.withRoutes(routes)
+        RouterModule,
+        RouterTestingModule.withRoutes(routes),
+        AppComponent
       ],
       declarations: [
         HomeComponent,
         AboutComponent,
-        ContactComponent,
-        AppComponent
-      ]
+        ContactComponent
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
 
     router = TestBed.inject(Router);
@@ -158,7 +161,8 @@ describe('NgxHistoryModule', () => {
   }));
 
   it('init & reset method works', fakeAsync(() => {
-    history.init();
+    history.initialize();
+    tick();
     router.navigate(['']);
     tick();
     router.navigate(['/about']);
@@ -170,7 +174,7 @@ describe('NgxHistoryModule', () => {
     expect(location.path()).toBe('/home');
     expect(history.canGoBack).toBeFalse();
     expect(history.canGoForward).toBeFalse();
-    history.init('/contact');
+    history.initialize('/contact');
     tick();
     expect(location.path()).toBe('/contact');
     expect(history.canGoBack).toBeFalse();
