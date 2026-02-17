@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "scripts": {
     "ng": "npx ng",
-    "start": "npx ng serve",
+    "start": "npx ng serve ngx-history-demo --open",
+    "start:demo": "npx ng serve ngx-history-demo --open",
     "build": "npx ng build",
     "test": "npx ng test ngx-history",
     "lint": "echo 'Linting not configured. Run: ng add @angular-eslint/schematics'",
