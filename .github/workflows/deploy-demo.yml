@@ -42,6 +42,12 @@ jobs:
       - name: Build demo 🏗️
         run: npm run build:demo
 
+      - name: Add SPA support files 🔧
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        run: |
+          echo "" > dist/ngx-history-demo/browser/.nojekyll
+          cp dist/ngx-history-demo/browser/index.html dist/ngx-history-demo/browser/404.html
+
       - name: Setup Pages 📄
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: actions/configure-pages@v4
@@ -50,7 +56,7 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "dist/ngx-history-demo"
+          path: "dist/ngx-history-demo/browser"
 
       - name: Deploy to GitHub Pages 🚀
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
